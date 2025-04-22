@@ -9,20 +9,19 @@ function calculateRentalCost(days) {
   const BIG_DISCOUNT = 50;
   const SMALL_VOCATION = 3;
   const BIG_VOCATION = 7;
+  const TOTAL_RENTAL_COST = days * DAY_RENTAL_COST;
 
-  if (SMALL_VOCATION < 3) {
-    return days * DAY_RENTAL_COST;
+  if (days < SMALL_VOCATION) {
+    return TOTAL_RENTAL_COST;
   }
 
   if (days >= SMALL_VOCATION && days < BIG_VOCATION) {
-    return days * DAY_RENTAL_COST - SMALL_DISCOUNT;
+    return TOTAL_RENTAL_COST - SMALL_DISCOUNT;
   }
 
   if (days >= BIG_VOCATION) {
-    return days * DAY_RENTAL_COST - BIG_DISCOUNT;
+    return TOTAL_RENTAL_COST - BIG_DISCOUNT;
   }
-
-  return DAY_RENTAL_COST * days;
 }
 
 module.exports = calculateRentalCost;
